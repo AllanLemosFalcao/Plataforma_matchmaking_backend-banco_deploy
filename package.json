@@ -7,7 +7,7 @@
     "db:pull": "prisma db pull",
     "db:generate": "prisma generate",
     "dev": "nodemon --exec ts-node src/server.ts",
-    "build": "tsc",
+    "build": "npx prisma generate && tsc", 
     "start": "node dist/server.js"
   },
   "keywords": [],
