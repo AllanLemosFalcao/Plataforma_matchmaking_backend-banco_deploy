@@ -29,7 +29,7 @@ O backend do **caisUp** é uma API construída em Node.js com TypeScript e Expre
 ## ✅ Funcionalidades
 
 - 🔐 **Autenticação**: Registro e login com criptografia Bcrypt e geração de token JWT.
-- 🎯 **Algoritmo de Matchmaking**: Sistema de recomendação que cruza dados (segmentos e localização) e atribui *scores* (+50 para segmento igual, +30 para mesma cidade).
+- 🎯 **Algoritmo de Matchmaking**: Sistema de recomendação que cruza dados (segmentos e localização) e atribui *scores*.
 - 🤝 **Interesses e Matches**: Lógica de aceite, recusa e registro de interesses mútuos.
 - 💬 **WebSockets (Real-time)**: Salas exclusivas de chat geradas dinamicamente para interações instantâneas.
 - 📊 **Estatísticas (Dashboard)**: Contagem em tempo real de envios, recebimentos e matches ativos.
