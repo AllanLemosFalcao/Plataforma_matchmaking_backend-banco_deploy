@@ -8,10 +8,6 @@ API REST, WebSockets e modelagem de banco de dados da plataforma de matchmaking 
 
 **Nome do Projeto:** CAISUP
 
-| Nome | Papel | GitHub |
-|------|-------|--------|
-| Allan Harrison Lemos de Barros Falcão | Full-Stack | [AllanLemosFalcao](https://github.com/AllanLemosFalcao) |
-
 ---
 
 ## 🔗 Links do Projeto
