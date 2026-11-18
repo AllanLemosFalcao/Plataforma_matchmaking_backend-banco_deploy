@@ -77,7 +77,6 @@ model investidor {
   investidor_estagio  investidor_estagio[]
   investidor_segmento investidor_segmento[]
   match_conexao       match_conexao[]
-  matches             matches[]
 
   @@map("investidor")
 }
@@ -166,9 +165,10 @@ model startup {
   mercado                String?              @db.VarChar(255)
   modelo_negocio         String?              @db.VarChar(255)
   participacao_oferecida Decimal?             @db.Decimal(5, 2)
+  video_pitch_url         String?             @db.VarChar(255)
+  documento_canvas_url    String?             @db.VarChar(255)
   interesse              interesse[]
   match_conexao          match_conexao[]
-  matches                matches[]
   plano_negocio          plano_negocio[]
   usuario                usuario              @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade, onUpdate: NoAction, map: "startup_ibfk_1")
   startup_segmento       startup_segmento[]
@@ -195,6 +195,7 @@ model usuario {
   email              String               @unique(map: "email") @db.VarChar(150)
   senha_hash         String               @db.VarChar(255)
   tipo_usuario       usuario_tipo_usuario
+  plano              usuario_plano?       @default(basico)
   status             usuario_status?      @default(ativo)
   foto_url           String?              @db.Text
   criado_em          DateTime?            @default(now()) @db.Timestamp(0)
@@ -207,6 +208,11 @@ model usuario {
   @@map("usuario")
 }
 
+enum usuario_plano {
+  basico
+  premium
+}
+
 model investidor_estagio {
   id_investidor String                     @db.Char(36)
   estagio       investidor_estagio_estagio
@@ -215,19 +221,6 @@ model investidor_estagio {
 
   @@id([id_investidor, estagio])
   @@map("investidor_estagio")
-}
-
-model matches {
-  id_match      String     @id @db.Char(36)
-  id_startup    String     @db.Char(36)
-  id_investidor String     @db.Char(36)
-  data_match    DateTime?  @default(now()) @db.DateTime(0)
-  startup       startup    @relation(fields: [id_startup], references: [id_startup], onDelete: NoAction, onUpdate: NoAction, map: "matches_ibfk_1")
-  investidor    investidor @relation(fields: [id_investidor], references: [id_investidor], onDelete: NoAction, onUpdate: NoAction, map: "matches_ibfk_2")
-
-  @@index([id_investidor], map: "id_investidor")
-  @@index([id_startup], map: "id_startup")
-  @@map("matches")
 }
 
 enum conversa_status {
@@ -296,3 +289,4 @@ enum investidor_estagio_estagio {
   tracao_inicial      @map("tracao inicial")
   crescimento___scale @map("crescimento / scale")
 }
+
